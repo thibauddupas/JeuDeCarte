@@ -35,19 +35,19 @@ public class Controleur {
     public void retournerCarte() {
         if (avancementDuJeu == AvancementDuJeu.CartesDistributees){
             for (Joueur joueur: joueurs){
-                for (Carte carte: joueur.getMain().getToutesCartes()){
+                for (Carte carte: joueur.getMain()){
                     carte.retournerDeFace();
                     vue.montrerCarteFaceVisible(joueurs.indexOf(joueur)+1,joueur.getNom(),
-                            joueur.getMain().getToutesCartes().get(joueur.getMain().getToutesCartes().indexOf(carte)).getRang().toString(),
-                            joueur.getMain().getToutesCartes().get(joueur.getMain().getToutesCartes().indexOf(carte)).getCouleur().toString());
+                            joueur.getMain().get(joueur.getMain().indexOf(carte)).getRang().toString(),
+                            joueur.getMain().get(joueur.getMain().indexOf(carte)).getCouleur().toString());
                 }
             }
             gagnant = joueurs.get(0);
             vue.afficherGagnant(gagnant.getNom());
             for (Joueur joueur: joueurs){
-                for (int indexCarte = 0; joueur.getMain().getToutesCartes().size() > 0; indexCarte++){
-                    pile.defausserCarte(joueur.getMain().getToutesCartes().get(0));
-                    joueur.getMain().defausser(joueur.getMain().getToutesCartes().get(0));
+                for (int indexCarte = 0; joueur.getMain().size() > 0; indexCarte++){
+                    pile.defausserCarte(joueur.getMain().get(0));
+                    joueur.defausser(joueur.getMain().get(0));
                 }
             }
             pile.melanger();
