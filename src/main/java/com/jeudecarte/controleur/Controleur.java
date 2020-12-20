@@ -13,16 +13,8 @@ public class Controleur {
 
     private Vue vue;
     private ArrayList<Joueur> joueurs;
-    private Joueur gagnant;
     private Pile pile;
     AvancementDuJeu avancementDuJeu;
-
-    public void ajouterJoueur(Joueur joueur) {
-        if (avancementDuJeu == AvancementDuJeu.AjoutDesJoueurs){
-            joueurs.add(joueur);
-            vue.afficherNom(joueurs.size(), joueur.getNom());
-        }
-    }
 
     public Controleur(Vue vue, Pile pile){
         this.vue = vue;
@@ -32,8 +24,16 @@ public class Controleur {
         vue.setControleur(this);
     }
 
+    public void ajouterJoueur(Joueur joueur) {
+        if (avancementDuJeu == AvancementDuJeu.AjoutDesJoueurs){
+            joueurs.add(joueur);
+            vue.afficherNom(joueurs.size(), joueur.getNom());
+        }
+    }
+
     public void retournerCarte() {
         if (avancementDuJeu == AvancementDuJeu.CartesDistributees){
+            //TODO Supprimer les boucles ?
             for (Joueur joueur: joueurs){
                 for (Carte carte: joueur.getMain()){
                     carte.retournerDeFace();
@@ -42,13 +42,17 @@ public class Controleur {
                             joueur.getMain().get(joueur.getMain().indexOf(carte)).getCouleur().toString());
                 }
             }
-            gagnant = joueurs.get(0);
+
+            //TODO implémenter RG gagnant, où ?
+            Joueur gagnant = joueurs.get(0);
             vue.afficherGagnant(gagnant.getNom());
+            //TODO Supprimer la boucle ?
             for (Joueur joueur: joueurs){
-                for (int indexCarte = 0; joueur.getMain().size() > 0; indexCarte++){
+                /*for (int indexCarte = 0; joueur.getMain().size() > 0; indexCarte++){
                     pile.defausserCarte(joueur.getMain().get(0));
                     joueur.defausser(joueur.getMain().get(0));
-                }
+                }*/
+                pile.defausserCarte(joueur.defausserToutesLesCartes());
             }
             pile.melanger();
             avancementDuJeu = AvancementDuJeu.GagnantRevele;
@@ -56,6 +60,7 @@ public class Controleur {
     }
 
     public void commencerPartie() {
+        //TODO Supprimer la boucle ?
         for (Joueur joueur: joueurs){
             joueur.piocher(pile.piocher());
             vue.montrerCarteFaceCachee(joueurs.indexOf(joueur)+1, joueur.getNom());

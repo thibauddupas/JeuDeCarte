@@ -1,6 +1,7 @@
 package com.jeudecarte.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 public class Pile {
@@ -26,11 +27,10 @@ public class Pile {
         return cartePiochee;
     }
 
-    public void defausserCarte(Carte carte) {
-        pileDeCarte.add(carte);
+    public void defausserCarte(ArrayList<Carte> cartes) {
+        pileDeCarte.addAll(cartes);
+        /*for (Carte carte: cartes){
+            pileDeCarte.add(carte);
+        }*/
     }
-
-    /*public void defausserCarte(Carte cartePiochee) {
-        pileDeCarte.add(cartePiochee);
-    }*/
 }
