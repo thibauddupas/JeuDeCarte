@@ -33,6 +33,7 @@ public class Controleur {
 
     public void retournerCarte() {
         if (avancementDuJeu == AvancementDuJeu.CartesDistributees){
+            //TODO Supprimer les boucles ?
             for (Joueur joueur: joueurs){
                 for (Carte carte: joueur.getMain()){
                     carte.retournerDeFace();
@@ -41,8 +42,11 @@ public class Controleur {
                             joueur.getMain().get(joueur.getMain().indexOf(carte)).getCouleur().toString());
                 }
             }
-            Joueur gagnant = joueurs.get(1);
+
+            //TODO implémenter RG gagnant, où ?
+            Joueur gagnant = joueurs.get(0);
             vue.afficherGagnant(gagnant.getNom());
+            //TODO Supprimer la boucle ?
             for (Joueur joueur: joueurs){
                 /*for (int indexCarte = 0; joueur.getMain().size() > 0; indexCarte++){
                     pile.defausserCarte(joueur.getMain().get(0));
@@ -56,6 +60,7 @@ public class Controleur {
     }
 
     public void commencerPartie() {
+        //TODO Supprimer la boucle ?
         for (Joueur joueur: joueurs){
             joueur.piocher(pile.piocher());
             vue.montrerCarteFaceCachee(joueurs.indexOf(joueur)+1, joueur.getNom());
