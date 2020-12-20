@@ -29,7 +29,7 @@ public class TestControleur {
         Boolean tailleDeLaMainOK = true;
         ArrayList<Joueur> listeDesJoueurs = controleur.getJoueurs();
         for (Joueur joueur: listeDesJoueurs){
-            ArrayList<Carte> listeDesCartes = joueur.getMain().getToutesCartes();
+            ArrayList<Carte> listeDesCartes = joueur.getMain();
             if (listeDesCartes.size() != 1){
                 tailleDeLaMainOK = false;
             }
@@ -47,7 +47,7 @@ public class TestControleur {
         Boolean cartesRetournees = true;
         ArrayList<Joueur> listeDesJoueurs = controleur.getJoueurs();
         for (Joueur joueur : listeDesJoueurs) {
-            ArrayList<Carte> listeDesCartes = joueur.getMain().getToutesCartes();
+            ArrayList<Carte> listeDesCartes = joueur.getMain();
             for (Carte carte : listeDesCartes) {
                 if (carte.getFaceVisible() == false) {
                     cartesRetournees = false;

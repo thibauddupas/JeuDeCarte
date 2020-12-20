@@ -16,7 +16,7 @@ public class JoueurTest {
         Toto.piocher(carte2);
         Carte carte3 = new Carte(Couleur.Carreau,Rang.Valet);
         Toto.piocher(carte3);
-        ArrayList<Carte> carteDeToto= Toto.getMain().getToutesCartes();
+        ArrayList<Carte> carteDeToto= Toto.getMain();
         Boolean carteTrouvee = false;
         for (Carte carte: carteDeToto){
             if (carte.equals(carte1)){

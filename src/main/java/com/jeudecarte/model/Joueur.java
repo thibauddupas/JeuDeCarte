@@ -1,12 +1,14 @@
 package com.jeudecarte.model;
 
+import java.util.ArrayList;
+
 public class Joueur {
     private String nom;
-    private Main main;
+    private ArrayList<Carte> main;
 
     public Joueur(String nom) {
         this.nom = nom;
-        main = new Main();
+        main = new ArrayList<>();
     }
 
     public String getNom() {
@@ -14,14 +16,21 @@ public class Joueur {
     }
 
     public void piocher(Carte carte) {
-        main.piocher(carte);
+        main.add(carte);
     }
 
     public void defausser(Carte carte) {
-        main.defausser(carte);
+        main.remove(carte);
     }
 
-    public Main getMain() {
+    public ArrayList<Carte> getMain() {
         return main;
+    }
+
+    public void retournerToutesLesCartesDuJoueur() {
+        for (int indexCarte = 0; main.size() > 0; indexCarte++){
+            main.remove(0);
+
+        }
     }
 }

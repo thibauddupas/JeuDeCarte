@@ -16,10 +16,10 @@ public class Vue {
     }
 
     public void demanderNouveauJoueur() {
-        System.out.println("Saisir nouveau joueur ou 'Commencer' pour lancer la partie:");
+        System.out.println("Saisir nouveau joueur ou 'Go' pour lancer la partie:");
         String nom = clavier.nextLine();
         if (!nom.isEmpty() && !nom.isBlank()){
-            if (nom.equals("Commencer")){
+            if (nom.equals("Go")){
                 controleur.commencerPartie();
             } else {
                 controleur.ajouterJoueur(new Joueur(nom));
