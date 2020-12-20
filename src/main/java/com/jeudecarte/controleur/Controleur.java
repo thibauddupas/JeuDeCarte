@@ -4,7 +4,6 @@ import com.jeudecarte.model.CalculateurGagnant;
 import com.jeudecarte.model.Carte;
 import com.jeudecarte.model.Joueur;
 import com.jeudecarte.model.Pile;
-import com.jeudecarte.vue.CommandLineView;
 import com.jeudecarte.vue.GameViewable;
 
 import java.util.ArrayList;
