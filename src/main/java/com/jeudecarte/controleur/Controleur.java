@@ -13,16 +13,8 @@ public class Controleur {
 
     private Vue vue;
     private ArrayList<Joueur> joueurs;
-    private Joueur gagnant;
     private Pile pile;
     AvancementDuJeu avancementDuJeu;
-
-    public void ajouterJoueur(Joueur joueur) {
-        if (avancementDuJeu == AvancementDuJeu.AjoutDesJoueurs){
-            joueurs.add(joueur);
-            vue.afficherNom(joueurs.size(), joueur.getNom());
-        }
-    }
 
     public Controleur(Vue vue, Pile pile){
         this.vue = vue;
@@ -32,9 +24,15 @@ public class Controleur {
         vue.setControleur(this);
     }
 
+    public void ajouterJoueur(Joueur joueur) {
+        if (avancementDuJeu == AvancementDuJeu.AjoutDesJoueurs){
+            joueurs.add(joueur);
+            vue.afficherNom(joueurs.size(), joueur.getNom());
+        }
+    }
+
     public void retournerCarte() {
         if (avancementDuJeu == AvancementDuJeu.CartesDistributees){
-            //joueurs.retournerToutesLesCartesDeTousLesJoueurs();
             for (Joueur joueur: joueurs){
                 for (Carte carte: joueur.getMain()){
                     carte.retournerDeFace();
@@ -43,15 +41,14 @@ public class Controleur {
                             joueur.getMain().get(joueur.getMain().indexOf(carte)).getCouleur().toString());
                 }
             }
-            //blablabla  123 test
-            // test 321
-            gagnant = joueurs.get(1);
+            Joueur gagnant = joueurs.get(1);
             vue.afficherGagnant(gagnant.getNom());
             for (Joueur joueur: joueurs){
-                for (int indexCarte = 0; joueur.getMain().size() > 0; indexCarte++){
+                /*for (int indexCarte = 0; joueur.getMain().size() > 0; indexCarte++){
                     pile.defausserCarte(joueur.getMain().get(0));
                     joueur.defausser(joueur.getMain().get(0));
-                }
+                }*/
+                pile.defausserCarte(joueur.defausserToutesLesCartes());
             }
             pile.melanger();
             avancementDuJeu = AvancementDuJeu.GagnantRevele;
