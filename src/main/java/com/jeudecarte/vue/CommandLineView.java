@@ -6,7 +6,7 @@ import com.jeudecarte.model.Joueur;
 
 import java.util.Scanner;
 
-public class Vue {
+public class CommandLineView implements GameViewable{
 
     Controleur controleur;
     Scanner clavier = new Scanner(System.in);

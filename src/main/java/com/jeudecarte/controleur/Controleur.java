@@ -1,9 +1,11 @@
 package com.jeudecarte.controleur;
 
+import com.jeudecarte.model.CalculateurGagnant;
 import com.jeudecarte.model.Carte;
 import com.jeudecarte.model.Joueur;
 import com.jeudecarte.model.Pile;
-import com.jeudecarte.vue.Vue;
+import com.jeudecarte.vue.CommandLineView;
+import com.jeudecarte.vue.GameViewable;
 
 import java.util.ArrayList;
 
@@ -11,17 +13,19 @@ public class Controleur {
 
     enum AvancementDuJeu {AjoutDesJoueurs,CartesDistributees,GagnantRevele}
 
-    private Vue vue;
+    private GameViewable vue;
     private ArrayList<Joueur> joueurs;
     private Pile pile;
-    AvancementDuJeu avancementDuJeu;
+    private AvancementDuJeu avancementDuJeu;
+    private CalculateurGagnant calculateurGagnant;
 
-    public Controleur(Vue vue, Pile pile){
+    public Controleur(GameViewable vue, Pile pile, CalculateurGagnant calculateurGagnant){
         this.vue = vue;
         this.pile = pile;
         joueurs = new ArrayList<>();
         avancementDuJeu = AvancementDuJeu.AjoutDesJoueurs;
         vue.setControleur(this);
+        this.calculateurGagnant = calculateurGagnant;
     }
 
     public void ajouterJoueur(Joueur joueur) {
@@ -43,8 +47,8 @@ public class Controleur {
                 }
             }
 
-            //TODO implémenter RG gagnant, où ?
-            Joueur gagnant = joueurs.get(0);
+            //TODO implémenter RG gagnant
+            Joueur gagnant = calculateurGagnant.trouverGagnant(joueurs);
             vue.afficherGagnant(gagnant.getNom());
             //TODO Supprimer la boucle ?
             for (Joueur joueur: joueurs){

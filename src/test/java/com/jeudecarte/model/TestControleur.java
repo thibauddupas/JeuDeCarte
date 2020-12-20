@@ -1,20 +1,21 @@
 package com.jeudecarte.model;
 
 import com.jeudecarte.controleur.Controleur;
-import com.jeudecarte.vue.Vue;
+import com.jeudecarte.vue.CommandLineView;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
 
 public class TestControleur {
     @Mock
-    Vue vue;
+    CommandLineView commandLineView;
     @Mock
     Pile pile;
+    @Mock
+    CalculateurGagnant calculateurGagnant;
     @Mock
     Carte carte1;
     @Mock
@@ -22,7 +23,7 @@ public class TestControleur {
 
     @Test
     void testCommencerPartie(){
-        Controleur controleur = new Controleur(vue,pile);
+        Controleur controleur = new Controleur(commandLineView,pile,calculateurGagnant);
         controleur.ajouterJoueur(new Joueur("Toto"));
         controleur.ajouterJoueur(new Joueur("Fifi"));
         controleur.commencerPartie();
@@ -39,7 +40,7 @@ public class TestControleur {
 
     @Test
     void testRetrounerCartes() {
-        Controleur controleur = new Controleur(vue, pile);
+        Controleur controleur = new Controleur(commandLineView, pile,calculateurGagnant);
         controleur.ajouterJoueur(new Joueur("Toto"));
         controleur.ajouterJoueur(new Joueur("Fifi"));
         controleur.commencerPartie();
@@ -59,7 +60,7 @@ public class TestControleur {
 
     @Test
     public void testAjouterJoueur() {
-        Controleur controleur = new Controleur(vue, pile);
+        Controleur controleur = new Controleur(commandLineView, pile,calculateurGagnant);
         Joueur joueurAAjouter = new Joueur("Toto");
         controleur.ajouterJoueur(joueurAAjouter);
         ArrayList<Joueur> listeDesJoueurs = controleur.getJoueurs();
