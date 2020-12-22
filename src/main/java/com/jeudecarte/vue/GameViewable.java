@@ -3,19 +3,19 @@ package com.jeudecarte.vue;
 import com.jeudecarte.controleur.Controleur;
 
 public interface GameViewable {
-    public void setControleur(Controleur controleur);
+    void setControleur(Controleur controleur);
 
-    public void demanderNouveauJoueur();
+    void demanderNouveauJoueur();
 
-    public void retournerCartes();
+    void retournerCartes();
 
-    public void proposerNouvellePartie();
+    void proposerNouvellePartie();
 
-    public void afficherNom(int numeroJoueur, String joueurAjoute);
+    void afficherNom(int numeroJoueur, String joueurAjoute);
 
-    public void montrerCarteFaceCachee(int numeroJoueur, String nomJoueur);
+    void montrerCarteFaceCachee(int numeroJoueur, String nomJoueur);
 
-    public void montrerCarteFaceVisible(int numeroJoueur, String nomJoueur, String rang, String couleur);
+    void montrerCarteFaceVisible(int numeroJoueur, String nomJoueur, String rang, String couleur);
 
-    public void afficherGagnant(String gagnant);
+    void afficherGagnant(String gagnant);
 }

@@ -13,7 +13,8 @@ public enum Rang {
     Valet (11),
     Dame (12),
     Roi (13),
-    As (14);
+    As (14),
+    Joker (15);
 
     private int index;
 

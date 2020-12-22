@@ -1,7 +1,6 @@
 package com.jeudecarte.vue;
 
 import com.jeudecarte.controleur.Controleur;
-import com.jeudecarte.model.Carte;
 import com.jeudecarte.model.Joueur;
 
 import java.util.Scanner;

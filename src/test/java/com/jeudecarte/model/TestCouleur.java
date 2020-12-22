@@ -10,6 +10,7 @@ public class TestCouleur {
     private static Couleur coeur;
     private static Couleur pique;
     private static Couleur trefle;
+    private static Couleur atout;
 
     @BeforeAll
     public static void beforeAll(){
@@ -17,6 +18,16 @@ public class TestCouleur {
         coeur = Couleur.Coeur;
         pique = Couleur.Pique;
         trefle = Couleur.Trefle;
+        atout = Couleur.Atout;
+    }
+
+    @Test
+    void changerIndex(){
+        carreau.definirCommeAtout();
+        for (Couleur couleur: Couleur.values()){
+            System.out.println(couleur.toString() + " a pour index " + couleur.getIndex());
+        }
+        assertTrue(carreau.getIndex() == atout.getIndex(), "Le carreau n'est pas devenu l'atout");
     }
 
     @Test
