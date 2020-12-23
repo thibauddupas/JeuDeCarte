@@ -50,7 +50,7 @@ public class GameSwing implements GameViewable {
             public void actionPerformed(ActionEvent e) {
                 textArea.append("Current players:\n");
                 nextPlayerName++;
-                controleur.ajouterJoueur(new Joueur("Joueur " + nextPlayerName));
+                controleur.ajouterUnJoueur(new Joueur("Joueur " + nextPlayerName));
             }
         });
     }
@@ -62,7 +62,7 @@ public class GameSwing implements GameViewable {
         btnDealCards.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 textArea.append("Cards dealt:\n");
-                controleur.commencerPartie();
+                controleur.commencerLaPartie();
             }
         });
     }
@@ -74,7 +74,7 @@ public class GameSwing implements GameViewable {
         btnFindWinner.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 textArea.append("Show your cards:\n");
-                controleur.retournerCarte();
+                controleur.devoilerLesCartesDeTousLesJoueurs();
             }
         });
     }

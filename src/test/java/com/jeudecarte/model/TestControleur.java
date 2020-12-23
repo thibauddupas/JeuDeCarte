@@ -24,9 +24,9 @@ public class TestControleur {
     @Test
     void testCommencerPartie(){
         Controleur controleur = new Controleur(commandLineView,pile,calculateurGagnant);
-        controleur.ajouterJoueur(new Joueur("Toto"));
-        controleur.ajouterJoueur(new Joueur("Fifi"));
-        controleur.commencerPartie();
+        controleur.ajouterUnJoueur(new Joueur("Toto"));
+        controleur.ajouterUnJoueur(new Joueur("Fifi"));
+        controleur.commencerLaPartie();
         Boolean tailleDeLaMainOK = true;
         ArrayList<Joueur> listeDesJoueurs = controleur.getJoueurs();
         for (Joueur joueur: listeDesJoueurs){
@@ -41,10 +41,10 @@ public class TestControleur {
     @Test
     void testRetrounerCartes() {
         Controleur controleur = new Controleur(commandLineView, pile,calculateurGagnant);
-        controleur.ajouterJoueur(new Joueur("Toto"));
-        controleur.ajouterJoueur(new Joueur("Fifi"));
-        controleur.commencerPartie();
-        controleur.retournerCarte();
+        controleur.ajouterUnJoueur(new Joueur("Toto"));
+        controleur.ajouterUnJoueur(new Joueur("Fifi"));
+        controleur.commencerLaPartie();
+        controleur.devoilerLesCartesDeTousLesJoueurs();
         Boolean cartesRetournees = true;
         ArrayList<Joueur> listeDesJoueurs = controleur.getJoueurs();
         for (Joueur joueur : listeDesJoueurs) {
@@ -62,7 +62,7 @@ public class TestControleur {
     public void testAjouterJoueur() {
         Controleur controleur = new Controleur(commandLineView, pile,calculateurGagnant);
         Joueur joueurAAjouter = new Joueur("Toto");
-        controleur.ajouterJoueur(joueurAAjouter);
+        controleur.ajouterUnJoueur(joueurAAjouter);
         ArrayList<Joueur> listeDesJoueurs = controleur.getJoueurs();
         Boolean joueurTrouve = false;
         for (Joueur joueur : listeDesJoueurs) {

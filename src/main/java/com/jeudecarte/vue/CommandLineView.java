@@ -19,9 +19,9 @@ public class CommandLineView implements GameViewable{
         String nom = clavier.nextLine();
         if (!nom.isEmpty() && !nom.isBlank()){
             if (nom.equals("Go")){
-                controleur.commencerPartie();
+                controleur.commencerLaPartie();
             } else {
-                controleur.ajouterJoueur(new Joueur(nom));
+                controleur.ajouterUnJoueur(new Joueur(nom));
             }
         }
     }
@@ -29,13 +29,13 @@ public class CommandLineView implements GameViewable{
     public void retournerCartes() {
         System.out.println("Taper sur une touche pour retourner les cartes");
         clavier.nextLine();
-        controleur.retournerCarte();
+        controleur.devoilerLesCartesDeTousLesJoueurs();
     }
 
     public void proposerNouvellePartie() {
         System.out.println("Taper sur une touche pour rejouer");
         clavier.nextLine();
-        controleur.commencerPartie();
+        controleur.commencerLaPartie();
     }
 
     public void afficherNom(int numeroJoueur, String joueurAjoute) {
